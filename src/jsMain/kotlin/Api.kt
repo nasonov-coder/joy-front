@@ -2,6 +2,7 @@ import io.ktor.client.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
+import io.ktor.http.*
 import kotlinx.serialization.Serializable
 
 object Api {
@@ -17,15 +18,21 @@ object Api {
     )
     @Serializable
     data class Song(
-        val name: String,
-        val composer: String?,
-        val author_text: String?,
-        val links: List<String>,
-        val seasons: List<String>,
-        val choirs: List<String>,
-        val genry: String?
+        var name: String,
+        var composer: String?,
+        var author_text: String?,
+        var links: List<String>,
+        var seasons: List<String>,
+        var choirs: List<String>,
+        var genry: String?
     )
     suspend fun getSongList(): List<Doc<Song>> {
         return jsonClient.get("$endpoint/song/list")
+    }
+    suspend fun putSong(song: Doc<Song>) {
+        return jsonClient.put("$endpoint/song/${song.id}") {
+            contentType(ContentType.Application.Json)
+            body = song.doc
+        }
     }
 }

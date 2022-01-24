@@ -14,7 +14,7 @@ fun AppHeader(){
             A (attrs = {
                 classes("navbar-brand")
             }, href = "#"){
-                Text("Navbar")
+                Text("Joy ⭐")
 
             }
             Button (attrs = {
@@ -38,18 +38,18 @@ fun AppHeader(){
                 Ul (attrs = {
                     classes("navbar-nav", "me-auto", "mb-2", "mb-lg-0")
                 }){
-                    Li (attrs = {
-                        classes("nav-item")
-                    }){
-                        A (attrs = {
-                            classes("nav-link", "active")
-                            attr("aria-current","page")
-                        }, href = "#"){
-                            Text("Home")
-
-                        }
-
-                    }
+//                    Li (attrs = {
+//                        classes("nav-item")
+//                    }){
+//                        A (attrs = {
+//                            classes("nav-link", "active")
+//                            attr("aria-current","page")
+//                        }, href = "#"){
+//                            Text("Home")
+//
+//                        }
+//
+//                    }
                     Li (attrs = {
                         classes("nav-item")
                     }){
@@ -61,73 +61,73 @@ fun AppHeader(){
                         }
 
                     }
-                    Li (attrs = {
-                        classes("nav-item", "dropdown")
-                    }){
-                        A (attrs = {
-                            classes("nav-link", "dropdown-toggle")
-                            id("navbarDropdown")
-                            attr("role","button")
-                            attr("data-bs-toggle","dropdown")
-                            attr("aria-expanded","false")
-                        }, href = "#"){
-                            Text(" Dropdown ")
-
-                        }
-                        Ul (attrs = {
-                            classes("dropdown-menu")
-                            attr("aria-labelledby","navbarDropdown")
-                        }){
-                            Li {
-                                A (attrs = {
-                                    classes("dropdown-item")
-                                }, href = "#"){
-                                    Text("Action")
-
-                                }
-
-                            }
-                            Li {
-                                A (attrs = {
-                                    classes("dropdown-item")
-                                }, href = "#"){
-                                    Text("Another action")
-
-                                }
-
-                            }
-                            Li {
-                                Hr (attrs = {
-                                    classes("dropdown-divider")
-                                })
-
-                            }
-                            Li {
-                                A (attrs = {
-                                    classes("dropdown-item")
-                                }, href = "#"){
-                                    Text("Something else here")
-
-                                }
-
-                            }
-
-                        }
-
-                    }
-                    Li (attrs = {
-                        classes("nav-item")
-                    }){
-                        A (attrs = {
-                            classes("nav-link", "disabled")
-                            attr("tabindex","-1")
-                            attr("aria-disabled","true")
-                        }, href = "#"){
-                            Text("Disabled")
-
-                        }
-
-                    }
+//                    Li (attrs = {
+//                        classes("nav-item", "dropdown")
+//                    }){
+//                        A (attrs = {
+//                            classes("nav-link", "dropdown-toggle")
+//                            id("navbarDropdown")
+//                            attr("role","button")
+//                            attr("data-bs-toggle","dropdown")
+//                            attr("aria-expanded","false")
+//                        }, href = "#"){
+//                            Text(" Dropdown ")
+//
+//                        }
+//                        Ul (attrs = {
+//                            classes("dropdown-menu")
+//                            attr("aria-labelledby","navbarDropdown")
+//                        }){
+//                            Li {
+//                                A (attrs = {
+//                                    classes("dropdown-item")
+//                                }, href = "#"){
+//                                    Text("Action")
+//
+//                                }
+//
+//                            }
+//                            Li {
+//                                A (attrs = {
+//                                    classes("dropdown-item")
+//                                }, href = "#"){
+//                                    Text("Another action")
+//
+//                                }
+//
+//                            }
+//                            Li {
+//                                Hr (attrs = {
+//                                    classes("dropdown-divider")
+//                                })
+//
+//                            }
+//                            Li {
+//                                A (attrs = {
+//                                    classes("dropdown-item")
+//                                }, href = "#"){
+//                                    Text("Something else here")
+//
+//                                }
+//
+//                            }
+//
+//                        }
+//
+//                    }
+//                    Li (attrs = {
+//                        classes("nav-item")
+//                    }){
+//                        A (attrs = {
+//                            classes("nav-link", "disabled")
+//                            attr("tabindex","-1")
+//                            attr("aria-disabled","true")
+//                        }, href = "#"){
+//                            Text("Disabled")
+//
+//                        }
+//
+//                    }
 
                 }
                 Form (attrs = {

@@ -5,21 +5,19 @@ import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import org.jetbrains.compose.web.dom.*
 import org.jetbrains.compose.web.renderComposable
-
+object State {
+    var songStatePusher: (Api.Doc<Api.Song>)->Unit = {}
+}
 @Composable
 fun SongListPage() {
-    var count by mutableStateOf(0)
-    var state by remember { mutableStateOf<List<Api.Doc<Api.Song>>>(listOf()) }
-//                        val scope = rememberCoroutineScope()
-    LaunchedEffect(Unit) { //todo unit?
-        state = Api.getSongList()
-        println(state)
-        count ++
+    var state by remember { mutableStateOf<Map<String, Api.Doc<Api.Song>>>(mapOf()) }
+    State.songStatePusher = {
+        state = state.toMutableMap().apply{ set(it.id, it) }
     }
-    println("SongListPage, ${state?.size}")
-    println("SongListPage, ${count}")
-
-    SongList(state )
+    LaunchedEffect(Unit) { //todo unit?
+        state = Api.getSongList().associateBy { it.id }
+    }
+    SongList(state.values.toList())
 }
 fun main() {
 //    var count: Int by mutableStateOf(0)
