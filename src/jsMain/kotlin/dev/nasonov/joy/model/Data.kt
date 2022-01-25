@@ -1,3 +1,5 @@
+package dev.nasonov.joy.model
+
 object Data {
     var seasons = listOf(
         "2018-2019",

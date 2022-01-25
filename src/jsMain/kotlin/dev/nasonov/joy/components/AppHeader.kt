@@ -1,6 +1,18 @@
+package dev.nasonov.joy.components
+
 import androidx.compose.runtime.Composable
+import app.softwork.routingcompose.Router
+import kotlinx.browser.document
+import kotlinx.browser.window
+import org.jetbrains.compose.web.attributes.AutoComplete.Companion.url
 import org.jetbrains.compose.web.attributes.InputType
+import org.jetbrains.compose.web.attributes.onSubmit
 import org.jetbrains.compose.web.dom.*
+import org.w3c.dom.Document
+import org.w3c.dom.Element
+import org.w3c.dom.HTMLFormElement
+import org.w3c.dom.HTMLInputElement
+import org.w3c.dom.url.URL
 
 @Composable
 fun AppHeader(){
@@ -130,8 +142,26 @@ fun AppHeader(){
 //                    }
 
                 }
+                val router = Router.current
                 Form (attrs = {
                     classes("d-flex")
+                    onSubmit {
+                        it.preventDefault()
+//                        it.stopPropagation()
+                        val k = it.target as HTMLFormElement
+//                        println(k)
+                        val input = k.querySelector("input") as HTMLInputElement
+//                        println(input)
+                        val search = input.value
+//                        println(search)
+                        val url = URL(window.location.toString());
+                        url.hash = "/song/search"
+                        url.searchParams.set("search", search);
+//                        println("kek")
+                        router.navigate("${url.hash}${url.search}")
+//                        window.history.pushState(object {}, "", );
+
+                    }
                 }, action = "") {
                     Input(attrs = {
                         classes("form-control", "me-2")

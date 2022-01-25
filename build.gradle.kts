@@ -7,8 +7,8 @@ plugins {
 
 }
 
-group = "me.user"
-version = "1.0"
+group = "dev.nasonov"
+version = "0.1"
 val ktorVersion = "1.6.7"
 val serializationVersion = "1.3.0"
 repositories {
@@ -45,6 +45,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-js:$ktorVersion")
                 implementation("io.ktor:ktor-client-json:$ktorVersion")
                 implementation("io.ktor:ktor-client-serialization:$ktorVersion")
+                implementation(npm("opensheetmusicdisplay", "1.4.3", false))
 
             }
         }
@@ -54,4 +55,7 @@ kotlin {
             }
         }
     }
+}
+rootProject.plugins.withType<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin> {
+    rootProject.the<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension>().nodeVersion = "16.0.0"
 }

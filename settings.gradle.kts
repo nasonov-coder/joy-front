@@ -5,5 +5,5 @@ pluginManagement {
     }
     
 }
-rootProject.name = "compose-web-test"
+rootProject.name = "joy"
 

@@ -1,32 +1,22 @@
-import androidx.compose.runtime.*
+package dev.nasonov.joy
+
 import app.softwork.routingcompose.HashRouter
-import io.ktor.client.*
-import io.ktor.client.features.json.*
-import io.ktor.client.features.json.serializer.*
+import dev.nasonov.joy.components.AppHeader
+import dev.nasonov.joy.components.SongListPage
+import dev.nasonov.joy.components.SongSearchPage
+import dev.nasonov.joy.components.utils.Icon
+import dev.nasonov.joy.utils.external.decodeURIComponent
 import org.jetbrains.compose.web.dom.*
 import org.jetbrains.compose.web.renderComposable
-object State {
-    var songStatePusher: (Api.Doc<Api.Song>)->Unit = {}
-}
-@Composable
-fun SongListPage() {
-    var state by remember { mutableStateOf<Map<String, Api.Doc<Api.Song>>>(mapOf()) }
-    State.songStatePusher = {
-        state = state.toMutableMap().apply{ set(it.id, it) }
-    }
-    LaunchedEffect(Unit) { //todo unit?
-        state = Api.getSongList().associateBy { it.id }
-    }
-    SongList(state.values.toList())
-}
+
 fun main() {
 //    var count: Int by mutableStateOf(0)
 
     renderComposable(rootElementId = "root") {
-        AppHeader()
         Div {
             HashRouter(initRoute = "/") {
                 // or BrowserRouter(initRoute = "/users") {
+                AppHeader()
 
                 route("/users") {
                     int { userID ->
@@ -40,11 +30,24 @@ fun main() {
                     route("/list") {
                         SongListPage()
                     }
+                    route("/search") {
+
+                        val search = parameters?.map?.get("search")?.first()
+
+                        SongSearchPage(search?.let { decodeURIComponent(it) })
+
+                    }
+                }
+                route("/file") {
+
                 }
                 noMatch {
                     Text("404!!!")
+                    Icon.Pdf()
+//                    dev.nasonov.joy.FilePage()
                 }
             }
+
         }
 //        Div({ style { padding(25.px) } }) {
 //            Button(attrs = {
