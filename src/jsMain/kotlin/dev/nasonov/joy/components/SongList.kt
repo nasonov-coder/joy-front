@@ -5,11 +5,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.*
 
 import dev.nasonov.joy.utils.Api
+import kotlinx.coroutines.flow.flow
 import org.jetbrains.compose.web.dom.*
 
+typealias Song = Api.Doc<Api.Song>
 @Composable
-fun SongList(list: List<Api.Doc<Api.Song>>, title: String?) {
-    var modalSong by remember { mutableStateOf<Api.Doc<Api.Song>?>(null) }
+fun SongList(list: List<Song>, title: String?) {
+    var modalSong by remember { mutableStateOf<Song?>(null) }
 //    var modalOpened by remember { mutableStateOf(false) }
     Div({ classes("container") }) {
         H4 { Text((title ?: "Song list") + "(${list.size})") }
