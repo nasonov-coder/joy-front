@@ -1,7 +1,11 @@
 package dev.nasonov.joy.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import app.softwork.bootstrapcompose.ToastContainer
+import app.softwork.bootstrapcompose.ToastContainerState
 import app.softwork.routingcompose.Router
+import dev.nasonov.joy.model.State
 import kotlinx.browser.document
 import kotlinx.browser.window
 import org.jetbrains.compose.web.attributes.AutoComplete.Companion.url
@@ -16,7 +20,14 @@ import org.w3c.dom.url.URL
 
 @Composable
 fun AppHeader(){
-
+    val toastContainerState: ToastContainerState = remember { ToastContainerState() }
+    State.toastContainerState = toastContainerState
+    ToastContainer(toastContainerState) {
+        classes("position-absolute", "bottom-0", "end-0", "p-3")
+        style {
+            property("z-index", 1100)
+        }
+    }
     Nav (attrs = {
         classes("navbar", "navbar-expand-lg", "navbar-light", "bg-light")
     }){

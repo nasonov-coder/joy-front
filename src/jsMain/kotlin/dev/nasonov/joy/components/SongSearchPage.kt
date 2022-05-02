@@ -1,6 +1,7 @@
 package dev.nasonov.joy.components
 
 import androidx.compose.runtime.*
+import app.softwork.bootstrapcompose.Alert
 import dev.nasonov.joy.components.utils.Alert
 import dev.nasonov.joy.components.utils.Container
 import dev.nasonov.joy.components.utils.PlaceholderTable

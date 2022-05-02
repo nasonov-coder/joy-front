@@ -14,7 +14,7 @@ import org.jetbrains.compose.web.css.selectors.CSSSelector.PseudoClass.scope
 import org.jetbrains.compose.web.dom.*
 
 @Composable
-fun SongCard(song: Api.Doc<Api.Song>, editing: Boolean, onChange: (Api.Song)->Unit) {
+fun SongCard(song: Api.Song, editing: Boolean, onChange: (Api.Song)->Unit) {
     Form(attrs = {
         classes("row")
     }) {
@@ -23,25 +23,25 @@ fun SongCard(song: Api.Doc<Api.Song>, editing: Boolean, onChange: (Api.Song)->Un
                 attr("disabled", "true")
             }
         }) {
-            StrInput("Название", "name", song.doc.name) { onChange(song.doc.copy(name = it)) }
-            StrInput("Композитор", "composer", song.doc.composer) { onChange(song.doc.copy(composer = it)) }
-            StrInput("Автор", "author_text", song.doc.author_text) { onChange(song.doc.copy(author_text = it)) }
-            StrInput("Жанр", "genry", song.doc.genry) { onChange(song.doc.copy(genry = it)) }
+            StrInput("Название", "name", song.name) { onChange(song.copy(name = it)) }
+            StrInput("Композитор", "composer", song.composer) { onChange(song.copy(composer = it)) }
+            StrInput("Автор", "author_text", song.author_text) { onChange(song.copy(author_text = it)) }
+            StrInput("Жанр", "genry", song.genry) { onChange(song.copy(genry = it)) }
             dev.nasonov.joy.components.utils.Select(
                 "Сезоны",
                 "seasons",
                 Data.seasons.map { it to it },
                 true,
-                song.doc.seasons
-            ) { onChange(song.doc.copy(seasons = it)) }
+                song.seasons
+            ) { onChange(song.copy(seasons = it)) }
             dev.nasonov.joy.components.utils.Select(
                 "Хоры",
                 "choirs",
                 Data.choirs.map { it to it },
                 true,
-                song.doc.choirs
-            ) { onChange(song.doc.copy(choirs = it)) }
-            for ((i, file) in song.doc.links.withIndex()) {
+                song.choirs
+            ) { onChange(song.copy(choirs = it)) }
+            for ((i, file) in song.links.withIndex()) {
                 HiddenInput { name("links[$i]"); value(file) }
             }
         }
