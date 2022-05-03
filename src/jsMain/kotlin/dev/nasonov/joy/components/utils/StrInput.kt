@@ -14,7 +14,7 @@ fun StrInput(label: String, name: String, defaultValue: String? = null, onChange
     var inputState by remember { mutableStateOf(defaultValue) }
     inputState = defaultValue
     Div({ classes("mb-3") }) {
-        Label(attrs = { classes("form-label") }) { Text(label) }
+        Label(attrs = { classes("form-label") }) { +label }
         Input(InputType.Text) {
             name(name)
             classes("form-control")

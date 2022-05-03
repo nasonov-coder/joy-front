@@ -35,7 +35,6 @@ kotlin {
             dependencies {
                 implementation(compose.web.core)
                 implementation(compose.runtime)
-                implementation("app.softwork:routing-compose:0.1.5")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
                 // https://mvnrepository.com/artifact/org.jetbrains.kotlin-wrappers/kotlin-mui
 //                implementation("org.jetbrains.kotlin-wrappers:kotlin-mui:5.2.7-pre.290-kotlin-1.6.10")
@@ -46,6 +45,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-json:$ktorVersion")
                 implementation("io.ktor:ktor-client-serialization:$ktorVersion")
                 implementation(npm("opensheetmusicdisplay", "1.4.3", false))
+                implementation("app.softwork:routing-compose:0.1.5")
                 implementation("app.softwork:bootstrap-compose:0.0.51")
 
             }

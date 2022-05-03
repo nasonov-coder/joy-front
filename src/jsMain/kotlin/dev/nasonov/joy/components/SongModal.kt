@@ -3,6 +3,7 @@ package dev.nasonov.joy.components
 import androidx.compose.runtime.*
 import app.softwork.bootstrapcompose.*
 import dev.nasonov.joy.components.utils.Spinner
+import dev.nasonov.joy.components.utils.unaryPlus
 import dev.nasonov.joy.model.State
 import dev.nasonov.joy.utils.Api
 import kotlinx.coroutines.launch
@@ -44,91 +45,24 @@ fun SongModal(song: Api.Doc<Api.Song>?, onDismissRequest: () -> Unit) {
             else
                 MyButton(
                     disabled = saving,
-                action = {
-                    saving = true
-                    scope.launch {
-                        val newSong = song.copy(doc = newSongDoc!!)
-                        Api.putSong(newSong)
-                        State.songStatePusher(newSong)
-                        State.toast { showToast("saved") }
-                        saving = false
+                    action = {
+                        saving = true
+                        scope.launch {
+                            val newSong = song.copy(doc = newSongDoc!!)
+                            Api.putSong(newSong)
+                            State.songStatePusher(newSong)
+                            State.toast { showToast("saved") }
+                            saving = false
                     }
                 }) {
                     if(saving) {
                         Spinner()
-                        Text(" Saving")
+                        +" Saving"
                     } else {
-                        Text("Save changes")
+                        +"Save changes"
                     }
                 }
         }
     )
-//    Div(attrs = {
-//        id(id)
-//        classes("modal", "fade")
-//        attr("tabindex", "-1")
-////        addEventListener("hide.bs.modal") {
-////            onCloseCallback()
-////        }
-//    })
-//    {
-//
-//        Div(attrs = {
-//            classes("modal-dialog")
-//        }) {
-//            if(song == null)
-//                return@Div
-//            Div(attrs = {
-//                classes("modal-content")
-//            }) {
-//                Div(attrs = {
-//                    classes("modal-header")
-//                }) {
-//                        H5(attrs = {
-//                            classes("modal-title")
-//                        }) {
-//                            Text(song.doc.name)
-//                            if (!editing)
-//                                A(attrs = {
-//                                    classes("link-primary", "mx-3", "fw-light")
-//                                    onClick {
-//                                        it.preventDefault()
-//                                        editing = true
-//                                    }
-//                                }) {
-//                                    Text("Edit")
-//                                }
-//                        }
-//
-//
-//
-//
-//
-//
-//                    Button(attrs = {
-//                        type(ButtonType.Button)
-//                        classes("btn-close")
-//                        attr("data-bs-dismiss", "modal")
-//                        attr("aria-label", "Close")
-//                    }) {}
-//
-//                }
-//                Div(attrs = {
-//                    classes("modal-body")
-//                }) {
-//
-//
-//                }
-//                Div(attrs = {
-//                    classes("modal-footer")
-//                }) {
-//
-//
-//                }
-//
-//            }
-//
-//        }
-//
-//    }
 }
+

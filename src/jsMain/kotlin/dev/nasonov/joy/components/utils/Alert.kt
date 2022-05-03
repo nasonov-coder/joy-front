@@ -26,7 +26,7 @@ fun Alert(text: String) {
     }) {
         Icon.Alert("fa-2x", "me-2")
         Div {
-            Text(" $text ")
+            +" $text "
         }
     }
 //    Div(attrs = {

@@ -9,7 +9,7 @@ import org.w3c.dom.get
 @Composable
 fun Select(label: String, name: String, options: List<Pair<String, String>>, multi: Boolean, selected: List<String>? = null, onChange: (List<String>) -> Unit) {
     Div({classes("mb-3")}) {
-        Label(attrs = { classes("form-label") }) { Text(label) }
+        Label(attrs = { classes("form-label") }) { +label }
         Select(attrs = {
             classes("form-select")
             name(name)
@@ -30,7 +30,7 @@ fun Select(label: String, name: String, options: List<Pair<String, String>>, mul
                     if (selected != null && option.first in selected)
                         selected()
                 }) {
-                    Text(option.second)
+                    +option.second
                 }
             }
         }

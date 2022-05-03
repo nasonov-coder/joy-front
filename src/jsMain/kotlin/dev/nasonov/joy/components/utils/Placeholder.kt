@@ -27,7 +27,7 @@ fun PlaceholderTable(rows: Int, cols: List<Int>, title: Boolean = true) {
                 Span(attrs = {
                     classes("placeholder", "col-$j", "placeholder-xs")
                 }) {}
-                Text(" ")
+                +" "
             }
         }
     }

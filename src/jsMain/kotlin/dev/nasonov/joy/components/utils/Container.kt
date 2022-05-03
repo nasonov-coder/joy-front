@@ -13,7 +13,7 @@ fun Container(
 ) {
 
     Div(attrs = {
-        classes("container")
+        classes("container-md")
         if (attrs != null) {
             attrs(this)
         }
